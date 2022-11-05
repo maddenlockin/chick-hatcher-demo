@@ -1,0 +1,142 @@
+section {
+    background-color: var(--color5);
+    max-width: 80%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: var(--gutter);
+    padding-bottom: var(--gutter);
+    margin-top: var(--gutter);
+    margin-bottom: var(--gutter);
+    border: solid 2px var(--color1);
+}
+
+main {
+    height: 100%;
+    display: flex;
+}
+
+header {
+    display: flex;
+    justify-content: flex-end;
+    background-color: var(--color3);
+    height: var(--header-height);
+    box-shadow: var(--shadow);
+}
+
+h2 {
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.gutter-right {
+    margin-right: 20px;
+}
+
+header img {
+    height: var(--header-height);
+}
+
+p {
+    margin: var(--gutter);
+}
+
+footer {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    height: var(--footer-height);
+    display: flex;
+    justify-content: flex-end;
+    background-color: var(--color3);
+    box-shadow: var(--shadow);
+}
+
+.farmer-stats {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.farmer img {
+    width: 250px;
+}
+.farmer {
+    color: #660000;
+    font-size: 5rem;
+    font-weight: 900;
+    font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
+    padding: 5px;
+}
+
+.farmer p {
+    background-color: brown;
+    border-radius: 15px;
+    padding: 20px;
+}
+
+.chick-stats {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.chick-stats input,
+.chick-stats button {
+    height: 100px;
+}
+
+.chick-stats button {
+    font-size: 2em;
+}
+.chick-stats input {
+    font-size: 3rem;
+    width: 80%;
+}
+
+.hatched-chicks {
+    text-align: center;
+}
+
+.hatched-chicks p {
+    font-size: 2rem;
+    color: white;
+    background-color: rebeccapurple;
+    padding: 20px;
+    border-radius: 15px;
+}
+
+form {
+    padding: 20px;
+    display: flex;
+}
+
+.chick {
+    cursor: pointer;
+    border: solid 3px #1082d4;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+    background-color: #a1e0eb;
+    justify-self: flex-end;
+    font-size: 3rem;
+}
+
+.hatched {
+    opacity: 0.2;
+    cursor: default;
+}
+
+.game-over {
+    transform: rotate(90deg);
+}
