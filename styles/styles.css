@@ -115,7 +115,7 @@ form {
 
 .hatched {
     opacity: 0.2;
-    cursor: default;
+    /* cursor: default; */
 }
 
 .game-over {

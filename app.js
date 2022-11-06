@@ -4,6 +4,8 @@ import { renderChick } from './render-utils.js';
 /* Get DOM Elements */
 const chickListEl = document.querySelector('.chicks');
 const formEl = document.querySelector('form');
+const farmerHPEl = document.querySelector('#farmer-hp');
+const hatchedNumberEl = document.querySelector('#hatched-number');
 
 /* State */
 const chicks = [
@@ -13,22 +15,24 @@ const chicks = [
     { id: 4, name: 'Tabitha', hp: 2 },
 ];
 let farmerHP = 8;
+let hatchedChicksCount = 0;
+let currentId = 5;
 
 /* Events */
 formEl.addEventListener('submit', (e) => {
     e.preventDefault();
-    //   - User has supplied a name and submitted the form
+    // User has supplied a name and submitted the form
     const data = new FormData(formEl);
 
-    //   - Make a new chick object with the user input
+    // Make a new chick object with the user input
     const newChick = {
-        // id: currentId,
+        id: currentId,
         name: data.get('chick-name'),
         hp: Math.ceil(Math.random() * 5),
     };
-    // currentId++;
+    currentId++;
 
-    //   - Add that object to the array of chicks in state
+    // Add that object to the array of chicks in state
     chicks.push(newChick);
 
     displayChicks();
@@ -36,13 +40,15 @@ formEl.addEventListener('submit', (e) => {
 
 function chickClickHandler(chickData) {
     if (chickData.hp <= 0) return;
+    //give a 1/3 chance of farmer warming chick
     if (Math.random() < 0.33) {
         chickData.hp--;
         alert('You warmed ' + chickData.name);
     } else {
         alert('You tried to warm ' + chickData.name + ' but the heat lamp broke');
     }
-    //  - possibly decrement player HP
+    //  give a 50% chance of chick rolling away
+    // possibly decrement player HP
     if (Math.random() < 0.5) {
         farmerHP--;
         alert(chickData.name + ' rolled away from you! You chase after it!');
@@ -50,17 +56,20 @@ function chickClickHandler(chickData) {
         alert(chickData.name + ' tried to roll away but there was a pebble in the way');
     }
 
-    // if (chickData.hp === 0) {
-    //     defeatedChicksCount++;
-    // }
+    // what happens when chickHP is 0?
+    if (chickData.hp === 0) {
+        hatchedChicksCount++;
+    }
 
+    // what happens when farmerHP is 0?
     if (farmerHP === 0) {
         farmerImgEl.classList.add('game-over');
         alert('GAME OVER');
     }
-    //     - update the DOM with new chick, player, and defeated chick state.
-    // farmerHPEl.textContent = farmerHP;
-    // defeatedNumberEl.textContent = defeatedchicksCount;
+
+    // update the DOM with new chick, player, and defeated chick state.
+    farmerHPEl.textContent = farmerHP;
+    hatchedNumberEl.textContent = hatchedChicksCount;
 
     const hpEl = document.getElementById(`chick-hp-${chickData.id}`);
     hpEl.textContent = chickData.hp < 0 ? 0 : chickData.hp;
