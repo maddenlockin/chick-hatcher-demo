@@ -3,6 +3,9 @@ import { renderChick } from './render-utils.js';
 /* Get DOM Elements */
 const chickListEl = document.querySelector('.chicks');
 const formEl = document.querySelector('form');
+const farmerHPEl = document.querySelector('#farmer-hp');
+const hatchedNumberEl = document.querySelector('#hatched-number');
+
 /* State */
 
 const chicks = [
@@ -66,6 +69,16 @@ function chickClickHandler(chickData) {
         farmerImgEl.classList.add('game-over');
         alert('GAME OVER');
     }
+
+    farmerHPEl.textContent = farmerHP;
+    hatchedNumberEl.textContent = hatchedCount;
+
+    const hpEl = document.getElementById(`chick-hp-${chickData.id}`);
+    hpEl.textContent = chickData.hp < 0 ? 0 : chickData.hp;
+
+    const eggEl = document.getElementById(`chick-${chickData.id}`);
+    eggEl.textContent = chickData.hp > 0 ? '🥚' : '🐣';
+    eggEl.ariaLabel = chickData.hp > 0 ? 'egg emoji' : 'hatched chick emoji';
 }
 /* Display Functions */
 function displayChicks() {
@@ -73,6 +86,12 @@ function displayChicks() {
 
     for (let chick of chicks) {
         const chickEl = renderChick(chick);
+        // we can make each chick clickable!
+        // this is a DYNAMIC EVENT LISTENER. we make a new event listener for every chick!
+        chickEl.addEventListener('click', () => {
+            chickClickHandler(chick);
+        });
+
         chickListEl.append(chickEl);
     }
 }
