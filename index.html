@@ -25,7 +25,7 @@
 
     <body>
         <header>
-            <h1>🧑🏾‍🌾 🐣 Farmer: Chick Hatching Edition</h1>
+            <h1><span aria-hidden="true">🧑🏾‍🌾 🐣</span> Farmer: Chick Hatching Edition</h1>
         </header>
 
         <main>
@@ -48,8 +48,9 @@
             </div>
             <div class="chick-stats">
                 <form>
-                    <input name="chick-name" />
-                    <button>New Egg 🥚</button>
+                    <label for="chick-name">Name of new chick:</label>
+                    <input name="chick-name" type="text" />
+                    <button type="submit">New Egg <span aria-hidden="true">🥚</span></button>
                 </form>
                 <div class="chicks"></div>
             </div>

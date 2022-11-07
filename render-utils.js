@@ -14,6 +14,7 @@ export function renderChick(chickData) {
     // if the chick lives, do a imp emoji, else do a fire emoji
     eggEl.id = `chick-${chickData.id}`;
     eggEl.textContent = chickData.hp > 0 ? '🥚' : '🐣';
+    eggEl.ariaLabel = chickData.hp > 0 ? 'egg emoji' : 'hatched chick emoji';
 
     if (chickData.hp < 0) {
         chickEl.classList.add('hatched');
